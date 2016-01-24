@@ -1,0 +1,87 @@
+diff -ru php-5.5.30/configure php-5.5.30-patched/configure
+--- php-5.5.30/configure	2015-09-30 17:02:19.000000000 +0530
++++ php-5.5.30-patched/configure	2015-12-19 01:47:33.693532268 +0530
+@@ -6556,7 +6556,7 @@
+                        $APXS -S LIBEXECDIR='$APXS_LIBEXECDIR' \
+                              -i -n php5 $SAPI_SHARED"
+     else
+-      APXS_SYSCONFDIR='$(INSTALL_ROOT)'`$APXS -q SYSCONFDIR`
++      APXS_SYSCONFDIR=`$APXS -q SYSCONFDIR`
+       APACHE_INSTALL="\$(mkinstalldirs) '$APXS_LIBEXECDIR' && \
+                       \$(mkinstalldirs) '$APXS_SYSCONFDIR' && \
+                        $APXS -S LIBEXECDIR='$APXS_LIBEXECDIR' \
+@@ -7650,7 +7650,7 @@
+                  $APXS -S LIBEXECDIR='$APXS_LIBEXECDIR' \
+                        -i -n php5"
+   else
+-    APXS_SYSCONFDIR='$(INSTALL_ROOT)'`$APXS -q SYSCONFDIR`
++    APXS_SYSCONFDIR=`$APXS -q SYSCONFDIR`
+     INSTALL_IT="\$(mkinstalldirs) '$APXS_LIBEXECDIR' && \
+                 \$(mkinstalldirs) '$APXS_SYSCONFDIR' && \
+                  $APXS -S LIBEXECDIR='$APXS_LIBEXECDIR' \
+@@ -8474,7 +8474,7 @@
+                  $APXS -S LIBEXECDIR='$APXS_LIBEXECDIR' \
+                        -i -n php5"
+   else
+-    APXS_SYSCONFDIR='$(INSTALL_ROOT)'`$APXS -q SYSCONFDIR`
++    APXS_SYSCONFDIR=`$APXS -q SYSCONFDIR`
+     INSTALL_IT="\$(mkinstalldirs) '$APXS_LIBEXECDIR' && \
+                 \$(mkinstalldirs) '$APXS_SYSCONFDIR' && \
+                  $APXS -S LIBEXECDIR='$APXS_LIBEXECDIR' \
+@@ -9469,7 +9469,7 @@
+                        $APXS -S LIBEXECDIR='$APXS_LIBEXECDIR' \
+                              -i -n php5 $SAPI_SHARED"
+     else
+-      APXS_SYSCONFDIR='$(INSTALL_ROOT)'`$APXS -q SYSCONFDIR`
++      APXS_SYSCONFDIR=`$APXS -q SYSCONFDIR`
+       APACHE_HOOKS_INSTALL="\$(mkinstalldirs) '$APXS_LIBEXECDIR' && \
+                       \$(mkinstalldirs) '$APXS_SYSCONFDIR' && \
+                        $APXS -S LIBEXECDIR='$APXS_LIBEXECDIR' \
+diff -ru php-5.5.30/sapi/apache/config.m4 php-5.5.30-patched/sapi/apache/config.m4
+--- php-5.5.30/sapi/apache/config.m4	2015-09-30 17:00:53.000000000 +0530
++++ php-5.5.30-patched/sapi/apache/config.m4	2015-12-19 00:40:24.901538021 +0530
+@@ -100,7 +100,7 @@
+                        $APXS -S LIBEXECDIR='$APXS_LIBEXECDIR' \
+                              -i -n php5 $SAPI_SHARED"
+     else
+-      APXS_SYSCONFDIR='$(INSTALL_ROOT)'`$APXS -q SYSCONFDIR`
++      APXS_SYSCONFDIR=`$APXS -q SYSCONFDIR`
+       APACHE_INSTALL="\$(mkinstalldirs) '$APXS_LIBEXECDIR' && \
+                       \$(mkinstalldirs) '$APXS_SYSCONFDIR' && \
+                        $APXS -S LIBEXECDIR='$APXS_LIBEXECDIR' \
+diff -ru php-5.5.30/sapi/apache2filter/config.m4 php-5.5.30-patched/sapi/apache2filter/config.m4
+--- php-5.5.30/sapi/apache2filter/config.m4	2015-09-30 17:00:53.000000000 +0530
++++ php-5.5.30-patched/sapi/apache2filter/config.m4	2015-12-19 01:00:57.972534244 +0530
+@@ -73,7 +73,7 @@
+                  $APXS -S LIBEXECDIR='$APXS_LIBEXECDIR' \
+                        -i -n php5"
+   else
+-    APXS_SYSCONFDIR='$(INSTALL_ROOT)'`$APXS -q SYSCONFDIR`
++    APXS_SYSCONFDIR=`$APXS -q SYSCONFDIR`
+     INSTALL_IT="\$(mkinstalldirs) '$APXS_LIBEXECDIR' && \
+                 \$(mkinstalldirs) '$APXS_SYSCONFDIR' && \
+                  $APXS -S LIBEXECDIR='$APXS_LIBEXECDIR' \
+diff -ru php-5.5.30/sapi/apache2handler/config.m4 php-5.5.30-patched/sapi/apache2handler/config.m4
+--- php-5.5.30/sapi/apache2handler/config.m4	2015-09-30 17:00:53.000000000 +0530
++++ php-5.5.30-patched/sapi/apache2handler/config.m4	2015-12-19 00:39:56.714535555 +0530
+@@ -72,7 +72,7 @@
+                  $APXS -S LIBEXECDIR='$APXS_LIBEXECDIR' \
+                        -i -n php5"
+   else
+-    APXS_SYSCONFDIR='$(INSTALL_ROOT)'`$APXS -q SYSCONFDIR`
++    APXS_SYSCONFDIR=`$APXS -q SYSCONFDIR`
+     INSTALL_IT="\$(mkinstalldirs) '$APXS_LIBEXECDIR' && \
+                 \$(mkinstalldirs) '$APXS_SYSCONFDIR' && \
+                  $APXS -S LIBEXECDIR='$APXS_LIBEXECDIR' \
+diff -ru php-5.5.30/sapi/apache_hooks/config.m4 php-5.5.30-patched/sapi/apache_hooks/config.m4
+--- php-5.5.30/sapi/apache_hooks/config.m4	2015-09-30 17:00:53.000000000 +0530
++++ php-5.5.30-patched/sapi/apache_hooks/config.m4	2015-12-19 01:00:33.943529466 +0530
+@@ -101,7 +101,7 @@
+                        $APXS -S LIBEXECDIR='$APXS_LIBEXECDIR' \
+                              -i -n php5 $SAPI_SHARED"
+     else
+-      APXS_SYSCONFDIR='$(INSTALL_ROOT)'`$APXS -q SYSCONFDIR`
++      APXS_SYSCONFDIR=`$APXS -q SYSCONFDIR`
+       APACHE_HOOKS_INSTALL="\$(mkinstalldirs) '$APXS_LIBEXECDIR' && \
+                       \$(mkinstalldirs) '$APXS_SYSCONFDIR' && \
+                        $APXS -S LIBEXECDIR='$APXS_LIBEXECDIR' \
