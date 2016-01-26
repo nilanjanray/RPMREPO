@@ -1,0 +1,24 @@
+diff -ru php-7.0.2/configure php-7.0.2-patched/configure
+--- php-7.0.2/configure	2016-01-06 15:35:07.000000000 +0530
++++ php-7.0.2-patched/configure	2016-01-25 15:55:28.266588517 +0530
+@@ -6190,7 +6190,7 @@
+                  $APXS -S LIBEXECDIR='$APXS_LIBEXECDIR' \
+                        -i -n php7"
+   else
+-    APXS_SYSCONFDIR='$(INSTALL_ROOT)'`$APXS -q SYSCONFDIR`
++    APXS_SYSCONFDIR=`$APXS -q SYSCONFDIR`
+     INSTALL_IT="\$(mkinstalldirs) '$APXS_LIBEXECDIR' && \
+                 \$(mkinstalldirs) '$APXS_SYSCONFDIR' && \
+                  $APXS -S LIBEXECDIR='$APXS_LIBEXECDIR' \
+diff -ru php-7.0.2/sapi/apache2handler/config.m4 php-7.0.2-patched/sapi/apache2handler/config.m4
+--- php-7.0.2/sapi/apache2handler/config.m4	2016-01-06 15:35:07.000000000 +0530
++++ php-7.0.2-patched/sapi/apache2handler/config.m4	2016-01-25 16:01:01.112587479 +0530
+@@ -72,7 +72,7 @@
+                  $APXS -S LIBEXECDIR='$APXS_LIBEXECDIR' \
+                        -i -n php7"
+   else
+-    APXS_SYSCONFDIR='$(INSTALL_ROOT)'`$APXS -q SYSCONFDIR`
++    APXS_SYSCONFDIR=`$APXS -q SYSCONFDIR`
+     INSTALL_IT="\$(mkinstalldirs) '$APXS_LIBEXECDIR' && \
+                 \$(mkinstalldirs) '$APXS_SYSCONFDIR' && \
+                  $APXS -S LIBEXECDIR='$APXS_LIBEXECDIR' \
